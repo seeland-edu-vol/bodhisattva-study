@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>菩薩地研習入門導引 ｜ 漢修道風・依論起修</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Serif TC & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Elegant Traditional Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // 漢修專屬沉靜調色
+            sand: {
+              50: '#FAF8F5',
+              100: '#F5EFE6',
+              200: '#E8DFD3',
+              300: '#D6C8B4',
+              700: '#6E5D4F',
+              800: '#4D3F35',
+              900: '#2C241E',
+            },
+            wood: {
+              DEFAULT: '#8C5E3C',
+              dark: '#5C381E',
+              light: '#B2825B'
+            },
+            lotus: {
+              DEFAULT: '#C18C5D',
+              gold: '#C59B27',
+              red: '#964438'
+            }
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 自訂平滑過渡與細膩排版 */
+    body {
+      font-family: 'Noto Serif TC', serif;
+      background-color: #FAF8F5;
+      color: #2C241E;
+      scroll-behavior: smooth;
+    }
+    .calligraphy-title {
+      letter-spacing: 0.15em;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F5EFE6;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D6C8B4;
+      border-radius: 4px;
+    }
+    /* 宣紙紋理感細膩裝飾 */
+    .bg-paper {
+      background-color: #FAF8F5;
+      background-image: radial-gradient(#E8DFD3 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-paper transition-colors duration-300">
+
+  <!-- 頂部護眼調控與修學微型列 -->
+  <header class="border-b border-sand-200 bg-sand-50/90 backdrop-blur-md sticky top-0 z-50 transition-all shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- 標誌與學苑宗風 -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full border border-lotus-gold/60 flex items-center justify-center bg-sand-100 text-wood shadow-inner">
+          <i class="fa-solid fa-dharmachakra text-lg group-hover:rotate-45 transition-transform duration-700 text-lotus-gold"></i>
+        </div>
+        <div>
+          <span class="block text-xs text-wood tracking-widest font-sans font-medium">依論起修・解行並重</span>
+          <h1 class="text-lg md:text-xl font-bold tracking-wider text-sand-900 font-serif">菩薩地研習初階</h1>
+        </div>
+      </a>
+
+      <!-- 快捷工具與導航選單 -->
+      <div class="flex items-center gap-2 md:gap-4 font-sans text-sm">
+        <nav class="hidden md:flex items-center gap-6 text-sand-800 font-serif">
+          <a href="#origin" class="hover:text-lotus transition-colors">緣起宗要</a>
+          <a href="#roadmap" class="hover:text-lotus transition-colors">修學階次</a>
+          <a href="#structure" class="hover:text-lotus transition-colors">卷帙科判</a>
+          <a href="#glossary" class="hover:text-lotus transition-colors">法義辭庫</a>
+          <a href="#notebook" class="hover:text-lotus transition-colors">思惟筆記</a>
+        </nav>
+
+        <!-- 字級調控 (A- / A+) -->
+        <div class="flex items-center border border-sand-300 rounded-lg bg-sand-100 px-2 py-1 text-xs">
+          <button id="btnFontDec" class="px-2 py-0.5 hover:text-wood font-bold" title="縮小字體">A-</button>
+          <span class="text-sand-300">|</span>
+          <button id="btnFontInc" class="px-2 py-0.5 hover:text-wood font-bold" title="放大字體">A+</button>
+        </div>
+
+        <!-- 護眼溫潤暗色模式切換 -->
+        <button id="themeToggle" class="p-2 text-sand-800 hover:text-wood border border-sand-300 rounded-lg bg-sand-100" title="切換色調模式">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主內容容器 -->
+  <main id="contentContainer" class="max-w-6xl mx-auto px-4 py-8 space-y-16 text-base leading-relaxed">
+
+    <!-- 1. 緣起與宗風勉勵 (Hero) -->
+    <section id="origin" class="bg-sand-100/70 border border-sand-200 rounded-2xl p-6 md:p-10 shadow-sm relative overflow-hidden">
+      <div class="absolute -right-12 -bottom-12 opacity-5 pointer-events-none text-9xl text-wood">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-200/60 text-wood text-xs tracking-wider mb-4 font-sans">
+          <i class="fa-solid fa-quote-left text-[10px]"></i> 傳承玅境長老、常柏法師清淨修學正見
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-wide text-sand-900 mb-4 calligraphy-title">
+          建立正見・解行相應・依論起修
+        </h2>
+        <p class="text-sand-800 mb-4 text-justify">
+          《瑜伽師地論》本地分中之〈菩薩地〉（卷三十五至卷五十），為彌勒菩薩所宣講、玄奘大師所譯。其總攝大乘菩薩萬行之宗本，綱舉目張，歷述初發菩提心、受持大乘菩薩戒、深達真實義、行六波羅蜜與四攝法之行證軌則。
+        </p>
+        <blockquote class="border-l-2 border-lotus-gold pl-4 my-4 italic text-sand-700 bg-sand-200/30 py-2 rounded-r">
+          「佛法非紙上玄談，唯在深解法義以立不退正見，依止觀調伏現行煩惱，發大悲心行菩薩道。」
+        </blockquote>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="#roadmap" class="bg-wood hover:bg-wood-dark text-white px-5 py-2.5 rounded-lg shadow-sm font-sans text-sm flex items-center gap-2 transition-all">
+            <i class="fa-solid fa-compass"></i> 開啟初修三階地圖
+          </a>
+          <a href="#timer-section" class="border border-wood text-wood hover:bg-sand-200/50 px-5 py-2.5 rounded-lg font-sans text-sm flex items-center gap-2 transition-all">
+            <i class="fa-regular fa-clock"></i> 每日止觀默想（5-15分）
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 每日一行願 / 菩薩箴言卡片 (互動式抽籤思惟) -->
+    <section class="bg-white/80 border border-sand-200 rounded-2xl p-6 md:p-8 shadow-sm">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-sand-200 pb-4 mb-6 gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-lotus font-sans font-semibold">Daily Contemplation</span>
+          <h3 class="text-xl font-bold text-sand-900">菩薩行願・法語啟迪</h3>
+        </div>
+        <button id="btnRefreshQuote" class="text-xs font-sans border border-sand-300 hover:border-wood text-sand-800 hover:text-wood px-3 py-1.5 rounded-lg flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-arrows-rotate"></i> 隨喜換一則法義
+        </button>
+      </div>
+
+      <div id="quoteDisplay" class="bg-sand-50 rounded-xl p-6 border-l-4 border-lotus-gold transition-all duration-300">
+        <p id="quoteVerse" class="text-lg md:text-xl text-sand-900 font-medium mb-3">
+          「初發菩提心者，名為發心菩薩。發菩提心已，普於一切有情起平等心，隨順趣向無上菩提。」
+        </p>
+        <div class="flex justify-between items-center text-xs text-sand-700 font-sans">
+          <span id="quoteSource" class="font-semibold text-wood">《瑜伽師地論·菩薩地》卷三十五〈發心品〉</span>
+          <span id="quoteHint" class="bg-sand-200/50 px-2.5 py-1 rounded">修意思惟：平等拔苦，初發勇猛心</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 初學三階段修學路徑 (Roadmap) -->
+    <section id="roadmap" class="space-y-6">
+      <div class="text-center max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold text-sand-900 mb-2 calligraphy-title">初學菩薩地次第階梯</h3>
+        <p class="text-sm text-sand-700 font-sans">
+          學論如建高樓，不可躐等。初修同修依此三階漸進研求，可保解行無偏、行持得力。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 階段一 -->
+        <div class="bg-white border border-sand-200 rounded-xl p-6 relative flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-sand-200 text-wood flex items-center justify-center font-bold font-sans text-sm mb-4">1</div>
+            <h4 class="text-lg font-bold text-sand-900 mb-2">第一階：確立種姓與發心</h4>
+            <p class="text-xs text-wood mb-3 font-sans font-medium">研讀焦點：卷35《種姓品》、《發心品》</p>
+            <ul class="text-sm text-sand-700 space-y-2 list-disc list-inside">
+              <li>明辨大乘習性種姓與發心緣由。</li>
+              <li>發願不共世間名利，唯誓成菩提與化度有情。</li>
+              <li>奠定不畏輪迴生死的大悲勇悍力。</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-sand-100 flex justify-between items-center text-xs text-sand-700 font-sans">
+            <span>修學核心：<b>發清淨菩提心</b></span>
+            <i class="fa-solid fa-arrow-right text-sand-400"></i>
+          </div>
+        </div>
+
+        <!-- 階段二 -->
+        <div class="bg-white border border-lotus-gold/40 rounded-xl p-6 relative flex flex-col justify-between hover:shadow-md transition-shadow shadow-sm">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-lotus-gold/20 text-lotus-gold flex items-center justify-center font-bold font-sans text-sm mb-4">2</div>
+            <h4 class="text-lg font-bold text-sand-900 mb-2">第二階：防護身心納受戒品</h4>
+            <p class="text-xs text-wood mb-3 font-sans font-medium">研讀焦點：卷40-41《戒品》</p>
+            <ul class="text-sm text-sand-700 space-y-2 list-disc list-inside">
+              <li>三聚淨戒（律儀戒、攝善法戒、饒益有情戒）。</li>
+              <li>細研四重戒與四十三輕垢罪之開遮持犯。</li>
+              <li>自檢起心動念，落實日常生活處事。</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-sand-100 flex justify-between items-center text-xs text-sand-700 font-sans">
+            <span>修學核心：<b>三聚戒防非止惡</b></span>
+            <i class="fa-solid fa-arrow-right text-sand-400"></i>
+          </div>
+        </div>
+
+        <!-- 階段三 -->
+        <div class="bg-white border border-sand-200 rounded-xl p-6 relative flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-sand-200 text-wood flex items-center justify-center font-bold font-sans text-sm mb-4">3</div>
+            <h4 class="text-lg font-bold text-sand-900 mb-2">第三階：通達真實入六度行</h4>
+            <p class="text-xs text-wood mb-3 font-sans font-medium">研讀焦點：卷36《真實義品》、卷39-45《六度》</p>
+            <ul class="text-sm text-sand-700 space-y-2 list-disc list-inside">
+              <li>離言法性：破除我執法執之離二邊真實義。</li>
+              <li>以無所得般若智，攝持施、戒、忍、精進、禪定。</li>
+              <li>開展隨順世間四攝法門（布施、愛語、利行、同事）。</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-sand-100 flex justify-between items-center text-xs text-sand-700 font-sans">
+            <span>修學核心：<b>止觀深觀・悲智雙運</b></span>
+            <i class="fa-solid fa-circle-check text-wood"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 菩薩地科判綱目檢索與進度追蹤 (卷35 - 卷50) -->
+    <section id="structure" class="bg-white border border-sand-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-sand-200 pb-4">
+        <div>
+          <span class="text-xs text-wood font-sans font-medium tracking-wider">SYLLABUS & CHECKLIST</span>
+          <h3 class="text-xl font-bold text-sand-900">菩薩地卷帙科判・自主研讀進度</h3>
+        </div>
+        <!-- 進度指示 -->
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-sans text-sand-700">完成度：<span id="progressPercent" class="font-bold text-wood">0%</span></span>
+          <div class="w-32 bg-sand-200 rounded-full h-2 overflow-hidden">
+            <div id="progressBar" class="bg-wood h-full transition-all duration-300 w-0"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 研讀清單與科判條目 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="chapterList">
+        <!-- JS 動態渲染或靜態預先鋪陳 -->
+      </div>
+    </section>
+
+    <!-- 5. 核心法義互動小辭典 -->
+    <section id="glossary" class="space-y-6">
+      <div class="flex flex-col md:flex-row justify-between md:items-end gap-3">
+        <div>
+          <h3 class="text-2xl font-bold text-sand-900 calligraphy-title">法義微釋小辭典</h3>
+          <p class="text-sm text-sand-700 font-sans">初讀論典最易惑於名相，點擊可展開名相微釋與修行對照。</p>
+        </div>
+        <div class="relative">
+          <input type="text" id="glossarySearch" placeholder="檢索法相（如：三聚淨戒、真實義...）" 
+                 class="w-full md:w-64 text-sm px-3 py-2 pl-9 bg-sand-50 border border-sand-300 rounded-lg focus:outline-none focus:border-wood">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-sand-400 text-xs"></i>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="glossaryGrid">
+        <!-- 辭條由 JS 渲染 -->
+      </div>
+    </section>
+
+    <!-- 6. 禪修止觀計時器 & 思惟研讀筆記區 -->
+    <section id="timer-section" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- 左側：止觀靜慮計時器 -->
+      <div class="bg-white border border-sand-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center gap-2 text-wood mb-2">
+            <i class="fa-solid fa-bell text-sm"></i>
+            <h4 class="font-bold text-sand-900">止觀定課默想</h4>
+          </div>
+          <p class="text-xs text-sand-700 font-sans mb-6">聞思之後當入思惟修。可設定5分或15分鐘靜心觀息、反觀論義。</p>
+          
+          <div class="text-center py-6">
+            <div id="timerDisplay" class="text-4xl md:text-5xl font-mono font-bold text-sand-900 tracking-wider">
+              05:00
+            </div>
+            <div class="mt-4 flex justify-center gap-2">
+              <button onclick="setTimerDuration(300)" class="px-2.5 py-1 text-xs border border-sand-300 rounded bg-sand-50 hover:bg-sand-200">5 分鐘</button>
+              <button onclick="setTimerDuration(600)" class="px-2.5 py-1 text-xs border border-sand-300 rounded bg-sand-50 hover:bg-sand-200">10 分鐘</button>
+              <button onclick="setTimerDuration(900)" class="px-2.5 py-1 text-xs border border-sand-300 rounded bg-sand-50 hover:bg-sand-200">15 分鐘</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-2 font-sans pt-4">
+          <button id="btnTimerToggle" class="flex-1 bg-wood hover:bg-wood-dark text-white py-2 rounded-lg text-sm transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-play text-xs"></i> 開始靜坐
+          </button>
+          <button id="btnTimerReset" class="px-3 border border-sand-300 text-sand-700 hover:bg-sand-100 rounded-lg text-sm">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 右側：研讀心得與問疑筆記 (LocalStorage 自動存取) -->
+      <div class="md:col-span-2 bg-white border border-sand-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" id="notebook">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2 text-wood">
+              <i class="fa-regular fa-pen-to-square text-sm"></i>
+              <h4 class="font-bold text-sand-900">隨文思惟・疑義隨記</h4>
+            </div>
+            <span id="saveStatus" class="text-xs text-sand-400 font-sans">本機自動保存</span>
+          </div>
+          <p class="text-xs text-sand-700 font-sans mb-3">記錄聞論時的心得啟發、消文疑問，便於每週共修或向善知識請問。</p>
+          <textarea id="studyNote" rows="7" 
+                    placeholder="例如：今日思惟卷四十戒品，關於饒益有情戒第十條開遮處，應如何於職場調伏嗔心？..."
+                    class="w-full text-sm p-4 bg-sand-50 border border-sand-300 rounded-xl focus:outline-none focus:border-wood resize-none leading-relaxed font-sans"></textarea>
+        </div>
+        <div class="flex justify-between items-center pt-4 font-sans text-xs">
+          <span class="text-sand-400">數據僅存放於個人瀏覽器（隱私安全）</span>
+          <div class="flex gap-2">
+            <button id="btnCopyNote" class="px-3 py-1.5 border border-sand-300 rounded-lg hover:bg-sand-100 text-sand-800">
+              <i class="fa-regular fa-copy"></i> 複製文字
+            </button>
+            <button id="btnClearNote" class="px-3 py-1.5 border border-red-200 text-red-700 rounded-lg hover:bg-red-50">
+              清空
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 頁腳：學苑宗要理念 -->
+  <footer class="border-t border-sand-200 bg-sand-100/60 py-10 text-center font-sans mt-20">
+    <div class="max-w-4xl mx-auto px-4 space-y-4">
+      <div class="w-8 h-8 mx-auto rounded-full border border-sand-300 flex items-center justify-center text-sand-700 mb-2">
+        <i class="fa-solid fa-leaf text-xs"></i>
+      </div>
+      <p class="text-sm font-serif font-bold text-sand-800 tracking-wider">
+        「不為自己求安樂，但願眾生得離苦」
+      </p>
+      <p class="text-xs text-sand-700 max-w-xl mx-auto leading-relaxed">
+        本研習導引頁面依漢修學苑深契彌勒瑜伽大乘義理之法雨芳規而設。願與十方初學同修深入論藏、親近善士、聽聞正法、如理作意、法隨法行。
+      </p>
+      <div class="text-[11px] text-sand-400 pt-4">
+        修學無止境・願正法久住
+      </div>
+    </div>
+  </footer>
+
+  <!-- 提示訊息 Modal (無原生 alert) -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-sand-900 text-sand-50 px-4 py-2.5 rounded-lg shadow-lg text-xs font-sans opacity-0 transition-opacity pointer-events-none z-50 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-lotus-gold"></i>
+    <span id="toastMsg">已保存</span>
+  </div>
+
+  <!-- JavaScript 邏輯 -->
+  <script>
+    // 1. 科判章節資料 (卷35 ~ 卷50 精選綱要)
+    const chapters = [
+      { id: 'c35_1', vol: '卷三十五', title: '初持瑜伽處・種姓品第一', desc: '審辨菩薩種姓二種：本性住種姓、習所成種姓。明大乘法器善根之因。' },
+      { id: 'c35_2', vol: '卷三十五', title: '初持瑜伽處・發心品第二', desc: '初發大菩提心之相貌、緣由、力能及四因四緣四力之勝劣分別。' },
+      { id: 'c36_1', vol: '卷三十六', title: '初持瑜伽處・真實義品第四', desc: '抉擇離言法性，二種真實、四種真實，開示無顛倒如實之空性真理。' },
+      { id: 'c38_1', vol: '卷三十八', title: '初持瑜伽處・力種姓品第六', desc: '闡述菩薩方便善巧、勝劣功德力與成熟有情之行履。' },
+      { id: 'c39_1', vol: '卷三十九', title: '初持瑜伽處・施品第七', desc: '明自性施、一切施、難行施等九種大乘布施法門。' },
+      { id: 'c40_1', vol: '卷四十至四十一', title: '初持瑜伽處・戒品第十', desc: '菩薩摩訶薩律儀戒、攝善法戒、饒益有情戒；四重及四十三輕之開遮。' },
+      { id: 'c42_1', vol: '卷四十二', title: '初持瑜伽處・忍品第十一', desc: '耐怨害忍、安受苦忍、諦察法忍，調伏瞋慢忿恨之心法。' },
+      { id: 'c43_1', vol: '卷四十三', title: '初持瑜伽處・精進品第十二', desc: '擐甲精進、攝善法精進、饒益有情精進，勇猛修習對治懈怠。' },
+      { id: 'c44_1', vol: '卷四十四', title: '初持瑜伽處・靜慮品第十三', desc: '修習四禪八定，以靜慮止水照徹心性，引發神通善巧。' },
+      { id: 'c45_1', vol: '卷四十五', title: '初持瑜伽處・慧品第十四', desc: '了知五明（聲明、因明、醫方明、工巧明、內明），起大般若。' },
+      { id: 'c46_1', vol: '卷四十六至四十七', title: '第二持・攝事品 / 隨法禮品', desc: '以布施、愛語、利行、同事四攝引導眾生，善巧接引。' },
+      { id: 'c48_1', vol: '卷四十八至五十', title: '第三持・住品至究竟處', desc: '十二住與十三住次第階梯，菩薩終至如來地的圓滿證量。' }
+    ];
+
+    // 2. 每日一頌金句池
+    const quotes = [
+      {
+        verse: "「初發菩提心者，名為發心菩薩。發菩提心已，普於一切有情起平等心，隨順趣向無上菩提。」",
+        source: "《瑜伽師地論·菩薩地》卷三十五〈發心品〉",
+        hint: "修意思惟：平等拔苦，初發勇猛心"
+      },
+      {
+        verse: "「云何菩薩饒益有情戒？謂諸菩薩於諸有情，隨所應作一切事業，皆悉能作，無所違逆。」",
+        source: "《瑜伽師地論·菩薩地》卷四十〈戒品〉",
+        hint: "修意思惟：入世隨順利生，行持細密"
+      },
+      {
+        verse: "「依真如故，心不散動；依善巧故，能成熟物。是名菩薩清淨方便。」",
+        source: "《瑜伽師地論·菩薩地》卷三十六〈真實義品〉",
+        hint: "修意思惟：定慧均等，不住生死涅槃"
+      },
+      {
+        verse: "「菩薩行布施時，於諸有情不求恩報，亦不悕求當來果報，但欲饒益一切有情。」",
+        source: "《瑜伽師地論·菩薩地》卷三十九〈施品〉",
+        hint: "修意思惟：三輪體空，不住相布施"
+      },
+      {
+        verse: "「於苦不驚，於苦不沒，於苦善觀因緣法性，是名安受苦忍。」",
+        source: "《瑜伽師地論·菩薩地》卷四十二〈忍品〉",
+        hint: "修意思惟：逢逆境緣，作智慧觀察"
+      }
+    ];
+
+    // 3. 核心法義辭典資料
+    const glossaryData = [
+      {
+        term: "三聚淨戒",
+        brief: "律儀戒、攝善法戒、饒益有情戒",
+        detail: "律儀戒防護諸惡不起（聲聞小乘亦同）；攝善法戒積集菩提道糧一切萬善；饒益有情戒躬行慈悲，救護一切苦難眾生。此三者圓滿方為大乘菩薩淨戒。"
+      },
+      {
+        term: "真實義（四種真實）",
+        brief: "世間極成、道理極成、煩惱障淨智所行、所知障淨智所行",
+        detail: "自世間一般經驗共識，進而到名理邏輯推究，乃至二乘聲聞斷煩惱之無我空觀，終至佛菩薩徹見離一切言說自相的清淨法界智。"
+      },
+      {
+        term: "本性住種姓與習所成種姓",
+        brief: "先天無漏善根與後天聞熏薰習",
+        detail: "本性住種姓指無始法爾傳承的大乘種子；習所成種姓則是今生親近善知識、聽聞大乘正法後修習成就的大悲正信氣質。"
+      },
+      {
+        term: "四攝事",
+        brief: "布施、愛語、利行、同事",
+        detail: "菩薩接引有情之四大善巧工具。以財法布施結善緣，以柔軟真誠語說法，以具體善行助人脫困，並深入有情同甘共苦以潛移默化。"
+      },
+      {
+        term: "三輪體空",
+        brief: "無施者、無受者、無所施之物",
+        detail: "修習六度萬行時，心無能所分別，不滯著於自我功德，觀因緣所生無自性，契合真如實相。"
+      },
+      {
+        term: "諦察法忍",
+        brief: "深解佛法實相甚深義理而不驚怖",
+        detail: "於大乘甚深難解之無自性空、離言法性等理，心能安住、信樂忍可，不起誹謗亦不生退縮墮落。"
+      }
+    ];
+
+    // 初始化渲染章節清單
+    function renderChapters() {
+      const container = document.getElementById('chapterList');
+      const savedProgress = JSON.parse(localStorage.getItem('bodhisattva_progress') || '{}');
+
+      container.innerHTML = chapters.map(ch => {
+        const isChecked = !!savedProgress[ch.id];
+        return `
+          <div class="border ${isChecked ? 'border-wood/40 bg-sand-100/50' : 'border-sand-200 bg-sand-50/40'} rounded-xl p-4 flex items-start gap-3 transition-colors">
+            <input type="checkbox" id="${ch.id}" ${isChecked ? 'checked' : ''} 
+                   onchange="toggleChapterProgress('${ch.id}')"
+                   class="mt-1 w-4 h-4 text-wood accent-wood rounded focus:ring-0 cursor-pointer">
+            <div class="flex-1">
+              <label for="${ch.id}" class="cursor-pointer block">
+                <span class="text-xs text-wood font-medium">${ch.vol}</span>
+                <h5 class="font-bold text-sand-900 text-sm ${isChecked ? 'line-through opacity-70' : ''}">${ch.title}</h5>
+                <p class="text-xs text-sand-700 mt-1 leading-relaxed">${ch.desc}</p>
+              </label>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateProgressBar();
+    }
+
+    // 進度儲存與進度條更新
+    function toggleChapterProgress(id) {
+      const savedProgress = JSON.parse(localStorage.getItem('bodhisattva_progress') || '{}');
+      savedProgress[id] = !savedProgress[id];
+      localStorage.setItem('bodhisattva_progress', JSON.stringify(savedProgress));
+      renderChapters();
+      showToast('研讀進度已更新');
+    }
+
+    function updateProgressBar() {
+      const savedProgress = JSON.parse(localStorage.getItem('bodhisattva_progress') || '{}');
+      const checkedCount = Object.values(savedProgress).filter(Boolean).length;
+      const total = chapters.length;
+      const percentage = Math.round((checkedCount / total) * 100);
+
+      document.getElementById('progressPercent').innerText = percentage + '%';
+      document.getElementById('progressBar').style.width = percentage + '%';
+    }
+
+    // 渲染法義辭典
+    function renderGlossary(filterText = '') {
+      const container = document.getElementById('glossaryGrid');
+      const filtered = glossaryData.filter(item => 
+        item.term.includes(filterText) || item.brief.includes(filterText) || item.detail.includes(filterText)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-2 text-center py-8 text-sand-400 font-sans text-sm">無相符名相，歡迎自行在筆記中補充研求。</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map((item, idx) => `
+        <div class="bg-white border border-sand-200 rounded-xl p-5 hover:border-lotus-gold/60 transition-all cursor-pointer group"
+             onclick="toggleDetail(${idx})">
+          <div class="flex justify-between items-center mb-1">
+            <h4 class="font-bold text-sand-900 text-base group-hover:text-wood transition-colors">${item.term}</h4>
+            <i id="icon-${idx}" class="fa-solid fa-chevron-down text-xs text-sand-400 transition-transform"></i>
+          </div>
+          <div class="text-xs text-wood font-medium font-sans mb-2">${item.brief}</div>
+          <div id="detail-${idx}" class="text-sm text-sand-700 leading-relaxed pt-2 border-t border-sand-100 hidden">
+            ${item.detail}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleDetail(idx) {
+      const el = document.getElementById(`detail-${idx}`);
+      const icon = document.getElementById(`icon-${idx}`);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    // 辭典搜尋
+    document.getElementById('glossarySearch').addEventListener('input', (e) => {
+      renderGlossary(e.target.value.trim());
+    });
+
+    // 每日行願更換
+    let currentQuoteIdx = 0;
+    document.getElementById('btnRefreshQuote').addEventListener('click', () => {
+      currentQuoteIdx = (currentQuoteIdx + 1) % quotes.length;
+      const q = quotes[currentQuoteIdx];
+      const display = document.getElementById('quoteDisplay');
+      
+      display.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('quoteVerse').innerText = q.verse;
+        document.getElementById('quoteSource').innerText = q.source;
+        document.getElementById('quoteHint').innerText = q.hint;
+        display.style.opacity = '1';
+      }, 200);
+    });
+
+    // 字體縮放調控
+    let baseFontSize = 16;
+    document.getElementById('btnFontInc').addEventListener('click', () => {
+      if (baseFontSize < 20) {
+        baseFontSize += 1;
+        document.getElementById('contentContainer').style.fontSize = baseFontSize + 'px';
+      }
+    });
+    document.getElementById('btnFontDec').addEventListener('click', () => {
+      if (baseFontSize > 14) {
+        baseFontSize -= 1;
+        document.getElementById('contentContainer').style.fontSize = baseFontSize + 'px';
+      }
+    });
+
+    // 深色溫潤護眼切換 (Dark/Warm Sepia)
+    let isDark = false;
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      isDark = !isDark;
+      const body = document.body;
+      const icon = document.querySelector('#themeToggle i');
+      if (isDark) {
+        body.classList.add('bg-zinc-900', 'text-stone-200');
+        body.classList.remove('bg-paper');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        body.classList.remove('bg-zinc-900', 'text-stone-200');
+        body.classList.add('bg-paper');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // 靜坐計時器邏輯
+    let timerDuration = 300;
+    let timerRemaining = 300;
+    let timerInterval = null;
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60).toString().padStart(2, '0');
+      const s = (sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function setTimerDuration(seconds) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerDuration = seconds;
+      timerRemaining = seconds;
+      document.getElementById('timerDisplay').innerText = formatTime(seconds);
+      document.getElementById('btnTimerToggle').innerHTML = '<i class="fa-solid fa-play text-xs"></i> 開始靜坐';
+    }
+
+    document.getElementById('btnTimerToggle').addEventListener('click', () => {
+      if (timerInterval) {
+        // 暫停
+        clearInterval(timerInterval);
+        timerInterval = null;
+        document.getElementById('btnTimerToggle').innerHTML = '<i class="fa-solid fa-play text-xs"></i> 繼續靜坐';
+      } else {
+        // 開始
+        document.getElementById('btnTimerToggle').innerHTML = '<i class="fa-solid fa-pause text-xs"></i> 暫停靜坐';
+        timerInterval = setInterval(() => {
+          if (timerRemaining > 0) {
+            timerRemaining--;
+            document.getElementById('timerDisplay').innerText = formatTime(timerRemaining);
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            document.getElementById('btnTimerToggle').innerHTML = '<i class="fa-solid fa-play text-xs"></i> 圓滿靜心';
+            showToast('靜慮修思圓滿，收心回向');
+          }
+        }, 1000);
+      }
+    });
+
+    document.getElementById('btnTimerReset').addEventListener('click', () => {
+      setTimerDuration(timerDuration);
+    });
+
+    // 思惟筆記 LocalStorage 存取
+    const noteArea = document.getElementById('studyNote');
+    const saveStatus = document.getElementById('saveStatus');
+    noteArea.value = localStorage.getItem('bodhisattva_study_note') || '';
+
+    noteArea.addEventListener('input', () => {
+      localStorage.setItem('bodhisattva_study_note', noteArea.value);
+      saveStatus.innerText = '已儲存於本機';
+      setTimeout(() => {
+        saveStatus.innerText = '本機自動保存';
+      }, 1500);
+    });
+
+    document.getElementById('btnClearNote').addEventListener('click', () => {
+      if (noteArea.value.trim() && noteArea.value !== '') {
+        noteArea.value = '';
+        localStorage.removeItem('bodhisattva_study_note');
+        showToast('筆記已清空');
+      }
+    });
+
+    document.getElementById('btnCopyNote').addEventListener('click', () => {
+      if (!noteArea.value.trim()) {
+        showToast('筆記內容為空');
+        return;
+      }
+      noteArea.select();
+      document.execCommand('copy');
+      showToast('筆記內容已複製至剪貼簿');
+    });
+
+    // 輕量 Toast 訊息通知
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2400);
+    }
+
+    // 初始化頁面
+    window.onload = function() {
+      renderChapters();
+      renderGlossary();
+    };
+  </script>
+</body>
+</html>
